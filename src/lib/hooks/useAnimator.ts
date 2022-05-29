@@ -51,9 +51,3 @@ export function useAnimator(options?: optionsType) {
 
     return { play, entry, exit, display, idel, reverse, toward, animator };
 }
-
-
-export interface animationHooks {
-    onAnimationStart: (event: AnimationEvent) => void;
-    onAnimationEnd: (event: AnimationEvent) => void;
-}

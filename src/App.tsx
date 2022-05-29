@@ -1,24 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+//--- carousel
+import { Carousel, Layer } from './lib/carousel';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Carousel>
+        <Layer layer={1} animation={undefined}>
+          <img slide={0} src={logo} className="App-logo" alt="logo" />
+          <img slide={1} src={logo} className="App-logo" alt="logo" />
+          <img slide={2} src={logo} className="App-logo" alt="logo" />
+        </Layer>
+      </Carousel>
     </div>
   );
 }

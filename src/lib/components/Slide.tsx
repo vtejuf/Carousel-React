@@ -27,6 +27,13 @@ export default function Slide({ slide, children }: SlideProps) {
     useEffect(() => {
         if (selfRef.current != null) {
             const dom = selfRef.current as HTMLElement;
+            setTimeout(() => {
+                if (slide === 0) {
+                    animations?.display(dom);
+                } else {
+                    animations?.idel(dom);
+                }
+            });
             hooks.onAnimationStart = (event: AnimationEvent) => {
                 childList?.forEach(child => {
                     child.props.onAnimationStart?.(event, dom.dataset.carouserState, slide, layer);

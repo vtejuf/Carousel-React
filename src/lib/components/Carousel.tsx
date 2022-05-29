@@ -26,12 +26,6 @@ export interface CarouselProps {
 
 // TODO options 参数待实现
 export default function Carousel({ options = defaultOptions, layers, children }: CarouselProps) {
-    // 层级排序
-    if (Array.isArray(children)) {
-        children.sort((a, b) => {
-            return a.props.layer - b.props.layer;
-        });
-    }
 
     const apis = useRef<LayerApi[]>([]);
     const expose = (layer: number, api: LayerApi): void => {
@@ -49,27 +43,6 @@ export default function Carousel({ options = defaultOptions, layers, children }:
     const setTotalLength = (length: number) => {
         totalLength.current = length;
     };
-
-    // let processComp;
-    // const [processLen, setProcessLen] = useState(0);
-    // useEffect(() => {
-    //     console.log(123, totalLength);
-    //     processComp = [];
-    //     for (let i = 0; i < totalLength.current; i++) {
-    //         processComp.push(
-    //             <span className='ctrl-btn'>
-    //                 <span className="process"></span>
-    //             </span>
-    //         );
-    //     }
-    //     setProcessLen(totalLength.current);
-    // }, []);
-
-    // const clickSide = useRef('');
-    // const [count, sideClick] = useReducer((state: number, action: string) => {
-    //     clickSide.current = action;
-    //     return state + 1;
-    // }, 0);
 
     const contextRender = useCarouselContext({ forEach, find, expose, totalLength, setTotalLength });
     return contextRender(
